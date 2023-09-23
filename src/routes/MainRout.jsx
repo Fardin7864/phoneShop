@@ -5,12 +5,14 @@ import { createBrowserRouter } from "react-router-dom";
 import PhoneDetails from "../components/PhoneDetails/PhoneDetails";
 import Fevorite from "../components/Fevorite/Fevorite";
 
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const MainRout = createBrowserRouter([
     {
         path: '/',
         element:<Root></Root>,
-        loader: () => fetch('phone.json'),
+        loader: () => fetch('/phone.json'),
         errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
@@ -23,7 +25,7 @@ const MainRout = createBrowserRouter([
             },
             {
                 path: '/fevorite',
-                element: <Fevorite></Fevorite>
+                element: <Fevorite></Fevorite>,
             }
         ]
     }

@@ -17,4 +17,13 @@ const setToLocalStorage = (phones) =>{
     localStorage.setItem('phones',phones);
 }
 
-export {addToLocalStorage,getFromLocalStorage,setToLocalStorage};
+const removeFromLocalStorage = (id) =>{
+    const phones = getFromLocalStorage();
+    // console.log(phones)
+    const removedPhone = phones.filter(phone=> phone !== id);
+    // console.log(removedPhone)
+    localStorage.setItem('phones',JSON.stringify(removedPhone));
+
+}
+
+export {addToLocalStorage,getFromLocalStorage,setToLocalStorage,removeFromLocalStorage};
