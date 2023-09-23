@@ -8,8 +8,6 @@ const Fevorite = () => {
     const [isShowAll, setIsShowAll] = useState(false);
     const [toDisplayPhone, setToDisplayPhone]= useState([]);
     const [render, setRender] = useState(false);
-    // const storedPhones =  getFromLocalStorage();
-    // const displayPhone =   phones.filter(phone=> storedPhones.includes(phone.id))
 
     useEffect(() =>{
         const storedPhones =  getFromLocalStorage();
@@ -30,7 +28,7 @@ const Fevorite = () => {
           }
 
 
-         const phoneToDisplay = isShowAll ? toDisplayPhone : toDisplayPhone.slice(0,3);
+        const phoneToDisplay = isShowAll ? toDisplayPhone : toDisplayPhone.slice(0,3);
 
 
     return (
@@ -47,7 +45,8 @@ const Fevorite = () => {
     </div>
     <div>
         {
-            !isShowAll && <button onClick={handleShowAll} className="btn btn-warning text-white font-bold mb-10">Show all</button> || <button onClick={handleShowLess} className="btn btn-warning text-white font-bold mb-10">Show less</button>
+            toDisplayPhone.length > 3 &&
+           ( !isShowAll && <button onClick={handleShowAll} className="btn btn-warning text-white font-bold mb-10">Show all</button> || <button onClick={handleShowLess} className="btn btn-warning text-white font-bold mb-10">Show less</button>) 
 
         }
     </div>
