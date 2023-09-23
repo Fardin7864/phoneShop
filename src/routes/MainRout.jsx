@@ -3,6 +3,7 @@ import ErrorPage from "../components/Error/ErrorPage";
 import Home from "../components/Home/Home";
 import { createBrowserRouter } from "react-router-dom";
 import PhoneDetails from "../components/PhoneDetails/PhoneDetails";
+import Fevorite from "../components/Fevorite/Fevorite";
 
 
 const MainRout = createBrowserRouter([
@@ -19,6 +20,10 @@ const MainRout = createBrowserRouter([
             {
                 path: '/details/:id',
                 element:<PhoneDetails></PhoneDetails>,
+            },
+            {
+                path: '/fevorite',
+                element: <Fevorite></Fevorite>
             }
         ]
     }

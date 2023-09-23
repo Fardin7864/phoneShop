@@ -2,8 +2,13 @@ import Rating from "react-rating";
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai';
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
+import { addToLocalStorage } from "../../LocalStorageManagment/localStorage";
+// import {getFromLocalStorage } from "../../LocalStorageManagment/localStorage";
 
-const Phone = ({ phone }) => {
+const Phone = ({ phone}) => {
+  const handleSave = (id) =>{
+     addToLocalStorage(id)
+  }
   const {id, image, brand_name, phone_name, price, rating } = phone;
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -30,7 +35,7 @@ const Phone = ({ phone }) => {
             </p>
         </div>
         <div className="card-actions justify-center">
-          <button className="btn btn-primary">Add to fevorite</button>
+          <button onClick={()=>handleSave(id)} className="btn btn-primary">Add to fevorite</button>
           <button className="btn btn-primary"><Link to={`/details/${id}`}>Phone Details</Link></button>
         </div>
       </div>
@@ -39,12 +44,12 @@ const Phone = ({ phone }) => {
 };
 
 Phone.propTypes = {
-    phone: PropTypes.object.isRequired,
-    image: PropTypes.string.isRequired,
-    brand_name: PropTypes.string.isRequired,
-    phone_name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired
+    phone: PropTypes.object,
+    image: PropTypes.string,
+    brand_name: PropTypes.string,
+    phone_name: PropTypes.string,
+    price: PropTypes.number,
+    rating: PropTypes.number
 }
 
 export default Phone;
