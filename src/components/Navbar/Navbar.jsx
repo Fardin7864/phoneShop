@@ -1,6 +1,38 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext);
+
+  const signOut = () => { 
+    logOut();
+   }
+
+  const navLinks = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/fevorite">Fevorite</NavLink>
+      </li>
+      <li>
+        <NavLink to="/signup">Sign Up</NavLink>
+      </li>
+      { user &&
+        <>
+        <li>
+        <NavLink to="/profile">Profile</NavLink>
+      </li>
+      <li >
+       <Link>{user?.displayName || user?.email}</Link> 
+      </li>
+         </>
+      }
+    </>
+  );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -25,34 +57,23 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-          <li>
-            <NavLink to='/'>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to='/fevorite'>Fevorite</NavLink>
-          </li>
-          <li>
-            <NavLink to='/login'>Log In</NavLink>
-          </li>
+            {navLinks}
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl">X Phone</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <NavLink to='/'>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to='/fevorite'>Fevorite</NavLink>
-          </li>
-          <li>
-            <NavLink to='/login'>Log In</NavLink>
-          </li>
+          {navLinks}
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+
+          { user &&
+            <>
+          <Link onClick={signOut}> Sign Out</Link>
+            </> || <Link to= '/login'>Log In</Link>
+          }
       </div>
     </div>
   );

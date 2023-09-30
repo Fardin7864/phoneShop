@@ -6,6 +6,9 @@ import PhoneDetails from "../components/PhoneDetails/PhoneDetails";
 import Fevorite from "../components/Fevorite/Fevorite";
 
 import 'react-toastify/dist/ReactToastify.css';
+import SignUp from "../components/Signup/SignUp";
+import Login from "../components/Login/Login";
+import Profile from "../components/Profile/Profile";
 
 
 const MainRout = createBrowserRouter([
@@ -26,6 +29,18 @@ const MainRout = createBrowserRouter([
             {
                 path: '/fevorite',
                 element: <Fevorite></Fevorite>,
+            },
+            {
+                path: '/signup',
+                element: <SignUp></SignUp>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
             }
         ]
     }
